@@ -1,0 +1,75 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+//        jackOptions
+//                {
+//                    enabled true
+//                }
+        applicationId "damasterham.shadowsheet"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+    }
+
+//    compileOptions {
+//        targetCompatibility 1.8
+//        sourceCompatibility 1.8
+//        incremental false
+//    }
+}
+
+dependencies {
+    //compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    androidTestCompile 'com.google.code.findbugs:jsr305:3.0.1'
+    // This is dagger2
+    compile 'com.google.dagger:dagger:2.12'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.12'
+    // This is Dagger support for android
+    compile 'com.google.dagger:dagger-android:2.12'
+    compile 'com.google.dagger:dagger-android-support:2.12'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.12'
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support:design:26.+'
+    compile 'org.springframework.android:spring-android-rest-template:2.0.0.M3'
+    testCompile 'junit:junit:4.12'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.0'
+    compile "android.arch.lifecycle:extensions:1.0.0-rc1"
+    compile "android.arch.persistence.room:runtime:1.0.0-rc1"
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0-rc1"
+    compile 'com.google.code.gson:gson:2.7'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+
+
+}
+repositories {
+    maven {
+        url 'https://repo.spring.io/libs-milestone'
+    }
+}
